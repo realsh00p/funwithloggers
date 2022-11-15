@@ -4,6 +4,8 @@ project(
   funwithloggers
 )
 
+find_package(Threads REQUIRED COMPONENTS Threads)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
 set(CMAKE_CXX_STANDARD 20)
 
@@ -13,9 +15,13 @@ add_library(
 
 target_sources(
   lib
-  PRIVATE   src/LogStream.cpp
-  PUBLIC    src/Logger.hpp
+  PRIVATE   src/Foo.cpp
+            src/LogStream.cpp
+  PUBLIC    src/Foo.hpp
+            src/Future.hpp
+            src/Logger.hpp
             src/LogStream.hpp
+            src/Result.hpp
 )
 
 target_include_directories(
@@ -35,4 +41,5 @@ target_sources(
 target_link_libraries(
   main
   PRIVATE lib
+          Threads::Threads
 )
