@@ -4,7 +4,5 @@
 
 class Logger {
 public:
-  auto log() -> LogStream {
-    return LogStream();
-  }
+  auto log() -> LogStream { return LogStream(); }
 };
